@@ -45,3 +45,26 @@ def route_generator(wire_path):
 			pos.go(direction)
 			yield pos.value()
 
+
+def closest_crossing(wire_path1, wire_path2):
+	# Return manhattan distance between starting point and closests crossing
+
+	path1 = set(route_generator(wire_path1))
+	path2 = set(route_generator(wire_path2))
+
+	crossings = path1.intersection(path2)
+
+	distances = [abs(c[0]) + abs(c[1]) for c in crossings]
+	distances.sort()
+
+	return distances[0]
+
+
+
+
+
+	
+
+
+
+
