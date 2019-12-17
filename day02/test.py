@@ -1,4 +1,5 @@
 from main import IntComputer
+from star2 import get_output
 
 import unittest
 import pytest
@@ -15,3 +16,7 @@ def test_int_computer(start_memory, expected_end_memory):
 	int_computer.run_program()
 
 	assert int_computer.memory == expected_end_memory
+
+
+def test_get_output():
+	assert get_output(12, 2) == 5866663
