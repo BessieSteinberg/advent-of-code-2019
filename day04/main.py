@@ -1,11 +1,14 @@
 import re
 
 
-def is_valid(password):
+def is_valid(password, exact_double=False):
     # Returns (bool) True if password fits criteria
-
     # Check if it contains a double
-    if not re.search(r'(.)\1', password):
+    if exact_double:
+        search_for = r'(.)\1(?!\1)'
+    else:
+        search_for = r'(.)\1'
+    if not re.match(search_for, password):
         return False
 
     # Check that it is monotonically increasing

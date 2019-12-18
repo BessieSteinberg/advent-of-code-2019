@@ -13,3 +13,12 @@ import pytest
 ])
 def test_is_valid(password, expected_valid):
     assert is_valid(password) == expected_valid
+
+
+@pytest.mark.parametrize("password, expected_valid", [
+    ('112233', True),
+    ('123444', False),
+    ('111122', True),
+])
+def test_is_valid_only_doubles(password, expected_valid):
+    assert is_valid(password, exact_double=True) == expected_valid
