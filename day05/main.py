@@ -57,7 +57,7 @@ class IntComputer:
             parameters: (list)  list of bools describing which mode each parameter is in in
                 the format: [operand_1, operand_2, position_to_save]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # Parameters that refer to a write-to address are always in immediate mode
         parameter_modes[2] = True
@@ -76,7 +76,7 @@ class IntComputer:
             parameter_modes: (list)  list of bools describing which mode each parameter is in in
                 the format: [operand_1, operand_2, position_to_save]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # Parameters that refer to a write-to address are always in immediate mode
         parameter_modes[2] = True
@@ -95,7 +95,7 @@ class IntComputer:
             parameter_modes:(list)  list of bools describing which mode each parameter is in in
                 the format: [operand, pointer_position]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # this operation only needs 2 parameters
         parameters = self.get_parameters(parameter_modes[:2])
@@ -113,7 +113,7 @@ class IntComputer:
             parameter_modes:(list)  list of bools describing which mode each parameter is in in
                 the format: [operand, pointer_position]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # this operation only needs 2 parameters
         parameters = self.get_parameters(parameter_modes[:2])
@@ -132,7 +132,7 @@ class IntComputer:
             parameter_modes: (list)  list of bools describing which mode each parameter is in in
                 the format: [operand_1, operand_2, position_to_save]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # Parameters that refer to a write-to address are always in immediate mode
         parameter_modes[2] = True
@@ -152,7 +152,7 @@ class IntComputer:
             parameter_modes: (list)  list of bools describing which mode each parameter is in in
                 the format: [operand_1, operand_2, position_to_save]
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
 
         # Parameters that refer to a write-to address are always in immediate mode
         parameter_modes[2] = True
@@ -168,19 +168,23 @@ class IntComputer:
         """
         Gets the next input from the input queue and stores it into the given address
         """
-        import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
         # The next parameter is the write to address
         save_pos = self.get_next_int()
         self.memory[save_pos] = self.get_next_input()
 
-    def write_output(self, *args, **kwargs):
+    def write_output(self, parameter_modes):
         """
         Writes output from given memory position to the output queue
+        Args:
+            parameter_modes: (list)  list of bools describing which mode each parameter is in in
+                the format: [output_val]
         """
-        import pudb; pudb.set_trace()
-        # The next parameter is the read from address
-        save_pos = self.get_next_int()
-        self.outputs.append(self.memory[save_pos])
+        # import pudb; pudb.set_trace()
+        # this operation has only one parameter
+        parameters = self.get_parameters(parameter_modes[:1])
+        output_val = parameters[0]
+        self.outputs.append(output_val)
 
     def halt(self, *args, **kwargs):
         self.continue_program = False
@@ -211,7 +215,7 @@ class IntComputer:
             self.inputs = inputs
 
         while self.continue_program:
-            import pudb; pudb.set_trace()
+            # import pudb; pudb.set_trace()
             # read next opcode and increment pointer
             instruction_code = str(self.get_next_int())
             opcode = int(instruction_code[-2:])
